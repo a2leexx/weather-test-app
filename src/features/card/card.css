@@ -1,0 +1,68 @@
+.card {
+  position: relative;
+  border-radius: 10px;
+  width: 250px;
+  height: 250px;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+}
+
+.weather-info {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.temperature {
+  font-size: 4rem;
+  margin: 1rem;
+}
+
+.card-clear-sky-night {
+  background: url('./clear-sky-night.png');
+}
+
+.card-clear-sky-day {
+  background: url('./clear-sky-day.png');
+}
+
+.card-cloudy {
+  background: url('./cloudy.png');
+}
+
+.button-close {
+  position: absolute;
+  background: url('./xmark-solid.svg');
+  background-repeat: no-repeat;
+  border: none;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  right: 10px;
+  font-size: 0;
+  filter: invert()
+}
+
+.button-close:hover {
+  width: 22px;
+  height: 22px;
+  top: 9px;
+  right: 9px;
+}
+
+.favorite {
+  position: absolute;
+  appearance: none;
+  background: url('./heart-solid.svg');
+  background-repeat: no-repeat;
+  border: none;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  left: 10px;
+  filter: invert();
+}
+
+input.favorite:checked {
+  filter: invert(50%) sepia() hue-rotate(-50deg) brightness(125%)
+}

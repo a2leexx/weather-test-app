@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.panel {
+  margin: auto;
+}
+
+.show-only-favorites {
+  display: inline-block;
+  appearance: none;
+  width: 40px;
+  height: 20px;
+  border-radius: 20rem;
+  background-color: #ddd;
+  margin: 5px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.show-only-favorites:checked {
+  background-color: #888;
+}
+
+.show-only-favorites::after {
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: white;
+  content: "";
+  transition: 0.2s;
+}
+
+.show-only-favorites:checked::after {
+  transform: translateX(20px);
+}
