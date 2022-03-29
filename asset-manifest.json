@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/weather-test-app/static/css/main.4db4c060.css",
-    "main.js": "/weather-test-app/static/js/main.d71e9868.js",
+    "main.css": "/weather-test-app/static/css/main.c727e6d6.css",
+    "main.js": "/weather-test-app/static/js/main.e0e121ed.js",
     "static/media/clear-sky-night.png": "/weather-test-app/static/media/clear-sky-night.1b1bbde3340383278878.png",
     "static/media/cloudy.png": "/weather-test-app/static/media/cloudy.f98472d1a7fb23c060ef.png",
     "static/media/clear-sky-day.png": "/weather-test-app/static/media/clear-sky-day.3944689c8a1156b43ca8.png",
     "index.html": "/weather-test-app/index.html",
     "static/media/xmark-solid.svg": "/weather-test-app/static/media/xmark-solid.6837248f26b4746bca22.svg",
     "static/media/heart-solid.svg": "/weather-test-app/static/media/heart-solid.d83f0c873ac8d169a461.svg",
-    "main.4db4c060.css.map": "/weather-test-app/static/css/main.4db4c060.css.map",
-    "main.d71e9868.js.map": "/weather-test-app/static/js/main.d71e9868.js.map"
+    "main.c727e6d6.css.map": "/weather-test-app/static/css/main.c727e6d6.css.map",
+    "main.e0e121ed.js.map": "/weather-test-app/static/js/main.e0e121ed.js.map"
   },
   "entrypoints": [
-    "static/css/main.4db4c060.css",
-    "static/js/main.d71e9868.js"
+    "static/css/main.c727e6d6.css",
+    "static/js/main.e0e121ed.js"
   ]
 }
