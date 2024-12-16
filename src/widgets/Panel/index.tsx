@@ -45,20 +45,17 @@ export function Panel() {
 
     let cards: any = locations
         .filter((value) => value.isFavorite || !showOnlyFavorites)
-        .map((value) =>
-        (
-            <div key={`${value.id}`}>
-                <Card id={value.id} />
-            </div>
-        ));
+        .map((value) => <Card key={`${value.id}`} id={value.id} />);
 
     const onShowOnlyFavoritesChanged = (value: boolean) => {
         setShowOnlyFavorites(value);
     }
 
-    if (cards.length === 0) {
-        cards = <p>Нет информации для показа.</p>;
-    }
+    const content = cards.length === 0 ? <p className={styles['no-information']}>Нет информации для показа.</p> : (
+        <div className={styles.container}>
+            {cards}
+        </div>
+    );
 
     return (
         <div className={styles.panel}>
@@ -68,9 +65,7 @@ export function Panel() {
                 <Checkbox value={showOnlyFavorites} onChange={onShowOnlyFavoritesChanged} />
                 Показывать только избранное
             </p>
-            <div className={styles.container}>
-                {cards}
-            </div>
+            {content}
         </div>
     )
 }

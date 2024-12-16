@@ -11,37 +11,68 @@
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   border-radius: 10px;
-  width: 250px;
-  height: 250px;
+  width: 100%;
   color: white;
-  margin: 0 10px 20px;
-  padding: 10px;
+  padding: 10px 20px;
   animation: card_init 0.1s linear 1 0s;
 }
 
+.city-name {
+  width: 100%;
+  text-align: center; 
+  font-size: 16px;
+  line-height: 20px;
+  padding: 0 20px;
+}
+
 .weather-info {
-  margin: 0;
-  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
 }
 
 .temperature {
-  font-size: 4rem;
-  margin: 1rem;
+  font-size: 64px;
+  margin: 16px 0;
+}
+
+.card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media (min-width: 480px) {
+  .card-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .weather-info {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .card-clear-sky-night {
-  background: url('./images/clear-sky-night.png');
+  background: center center / cover no-repeat url('./images/clear-sky-night.png');
 }
 
 .card-clear-sky-day {
-  background: url('./images/clear-sky-day.png');
+  background: center center / cover no-repeat url('./images/clear-sky-day.png');
 }
 
 .card-cloudy {
-  background: url('./images/cloudy.png');
+  background: center center / cover no-repeat url('./images/cloudy.png');
 }
 
 .button-close {

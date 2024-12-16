@@ -20,16 +20,18 @@ interface WeatherDataProps {
 function WeatherData({ cityName, temp, feelsLike, humidity, windSpeed, description }: WeatherDataProps) {
     return (
         <>
-            <p className={styles['weather-info']}>
+            <p className={styles['city-name']}>
                 {cityName}
             </p>
-            <p className={styles.temperature}>{(temp <= 0 ? "" : "+") + temp}&deg;</p>
-            <p className={styles['weather-info']}>
-                Ощущается как {feelsLike}&deg;<br />
-                Влажность {humidity}%<br />
-                Ветер {Math.round(windSpeed)} м/с<br />
-                {description}
-            </p>
+            <div className={styles['card-content']}>
+                <p className={styles.temperature}>{(temp <= 0 ? "" : "+") + temp}&deg;</p>
+                <p className={styles['weather-info']}>
+                    Ощущается как {feelsLike}&deg;<br />
+                    Влажность {humidity}%<br />
+                    Ветер {Math.round(windSpeed)} м/с<br />
+                    {description}
+                </p>
+            </div>
         </>
     );
 }
