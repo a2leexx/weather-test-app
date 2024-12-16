@@ -1,14 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Panel } from './widgets/panel/panel';
-import Search from './widgets/search/search';
+import { Panel } from './widgets/Panel';
+import { Message } from './widgets/Message';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Panel/>
-    </div>
+      <Message />
+    </>
   );
 }
 

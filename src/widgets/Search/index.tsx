@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './search.css';
+import styles from './Search.module.css';
 
 // реализует строку ввода с кнопкой добавления
 function Search(props : any) {
@@ -22,7 +22,7 @@ function Search(props : any) {
   }
     
   return (
-    <div className="search">
+    <div className={styles.search}>
       <input type="text" value={text} 
       onChange={onChange}
       onKeyDown={handleKeyDown}

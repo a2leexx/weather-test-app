@@ -3,17 +3,6 @@ import { ICard } from '../interfaces';
 
 const initialState: Array<ICard> = [];
 
-// классифицирует погоду на облачно/ясно днем/ясно ночью
-/* const getSkyState = (icon : string) : SkyState => {
-  if (icon === '01d' || icon === '02d')
-    return SkyState.ClearSkyDay;
-  
-  if (icon == '01n' || icon == '02n')
-    return SkyState.ClearSkyNight;
-  
-  return SkyState.Cloudy;
-} */
-
 export const locationSlice = createSlice({
     name: 'location',
     initialState,

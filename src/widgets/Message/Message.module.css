@@ -1,0 +1,36 @@
+.messages {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    pointer-events: none;
+}
+
+.message {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    border-radius: 8px;
+    border: 1px solid;
+    padding: 8px;
+    transition: transform 0.3s, opacity 0.3s;
+    pointer-events: all;
+    font-size: 14px;
+    line-height: 18px;
+}
+    
+.red {
+    border-color: #f00;
+    background-color: #faa;
+}
+
+.blue {
+    border-color: #8af;
+    background-color: #adf;
+}

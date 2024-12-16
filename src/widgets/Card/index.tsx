@@ -1,8 +1,11 @@
-import { ICard } from "../../interfaces";
+import { clsx } from 'clsx';
+
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useGetWeatherAtLocationQuery } from "../../redux/weatherApi";
-import './card.css';
 import { removeLocation, toogleFavoriteIcon } from "../../redux/locationSlice";
+import { showMessage } from "../../redux/messageSlice";
+
+import styles from './Card.module.css';
 
 // отображает данные о погоде
 interface WeatherDataProps {
@@ -16,18 +19,18 @@ interface WeatherDataProps {
 
 function WeatherData({ cityName, temp, feelsLike, humidity, windSpeed, description }: WeatherDataProps) {
     return (
-        <div>
-            <p className="weather-info">
+        <>
+            <p className={styles['weather-info']}>
                 {cityName}
             </p>
-            <p className="temperature">{(temp <= 0 ? "" : "+") + temp}&deg;</p>
-            <p className="weather-info">
+            <p className={styles.temperature}>{(temp <= 0 ? "" : "+") + temp}&deg;</p>
+            <p className={styles['weather-info']}>
                 Ощущается как {feelsLike}&deg;<br />
                 Влажность {humidity}%<br />
                 Ветер {Math.round(windSpeed)} м/с<br />
                 {description}
             </p>
-        </div>
+        </>
     );
 }
 
@@ -43,48 +46,58 @@ function Card({ id }: CardProps) {
     
     const onRemoveClick = () => {
         dispatch(removeLocation(id));
+        dispatch(showMessage({ text: `Удалена локация - ${cityName}`, color: 'red' }));
     }
 
     const onIsFavoriteChange = () => {
+        if (!isFavorite) {
+            dispatch(showMessage({ text: `Локация ${cityName} добавлена в избранное`, color: 'blue' }));
+        } else {
+            dispatch(showMessage({ text: `Локация ${cityName} удалена из избранного`, color: 'blue' }));
+        }
+
         dispatch(toogleFavoriteIcon(id));
     }
 
-    let backgroundStyle = 'card';
     let weatherInfo: any = null;
+    const isNight = isSuccess && (data?.weather?.[0]?.icon?.includes('n'));
+    const isCloudy = isSuccess && ((data.clouds?.all ?? 0) > 30);
 
     if (isSuccess) {
-        if ((data.clouds?.all ?? 0) < 30) {
-            const isNight = data?.weather?.[0]?.icon;
-            backgroundStyle += isNight ? " card-clear-sky-night" : " card-clear-sky-day";
-        }
-        else
-            backgroundStyle += " card-cloudy";
-
         weatherInfo = (
             <WeatherData 
                 cityName={cityName}
                 description={data?.weather?.[0]?.description ?? ''}
                 humidity={data?.main?.humidity ?? 0}
-                temp={data?.main?.temp ?? 0}
+                temp={Math.round(data?.main?.temp ?? 0)}
                 windSpeed={data?.wind?.speed ?? 0}
-                feelsLike={data?.main?.feels_like ?? 0}
+                feelsLike={Math.round(data?.main?.feels_like ?? 0)}
             />
         );
     }
     else {
-        backgroundStyle += ' card-clear-sky-day';
         if (isLoading)
             weatherInfo = <p>{cityName}<br />Загрузка...</p>;
         else
             weatherInfo = <p>{cityName}<br />Нет данных</p>;
     }
 
+    console.log(styles);
+
     return (
-        <div className={backgroundStyle}>
+        <div className={clsx(styles.card, {
+            [styles['card-clear-sky-day']]: !isCloudy && !isNight,
+            [styles['card-clear-sky-night']]: !isCloudy && isNight,
+            [styles['card-cloudy']]: isCloudy, 
+        })}>
             {weatherInfo}
-            <input className="favorite" type="checkbox" checked={isFavorite}
-                onChange={onIsFavoriteChange} />
-            <button onClick={onRemoveClick} className="button-close">
+            <input
+                className={styles.favorite}
+                type="checkbox"
+                checked={isFavorite}
+                onChange={onIsFavoriteChange}
+            />
+            <button onClick={onRemoveClick} className={styles['button-close']}>
             </button>
         </div>
     )

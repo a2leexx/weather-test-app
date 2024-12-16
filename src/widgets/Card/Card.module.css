@@ -1,0 +1,89 @@
+@keyframes card_init {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  width: 250px;
+  height: 250px;
+  color: white;
+  margin: 0 10px 20px;
+  padding: 10px;
+  animation: card_init 0.1s linear 1 0s;
+}
+
+.weather-info {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.temperature {
+  font-size: 4rem;
+  margin: 1rem;
+}
+
+.card-clear-sky-night {
+  background: url('./images/clear-sky-night.png');
+}
+
+.card-clear-sky-day {
+  background: url('./images/clear-sky-day.png');
+}
+
+.card-cloudy {
+  background: url('./images/cloudy.png');
+}
+
+.button-close {
+  position: absolute;
+  background: center center / contain no-repeat url('./images/xmark-solid.svg');
+  border: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  top: 10px;
+  right: 10px;
+  font-size: 0;
+  filter: invert()
+}
+
+.button-close:hover {
+  transform: scale(1.1);
+}
+
+.favorite {
+  position: absolute;
+  appearance: none;
+  background: center center / contain no-repeat url('./images/heart-solid.svg');
+  background-repeat: no-repeat;
+  border: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  top: 10px;
+  left: 10px;
+  filter: invert();
+}
+
+.favorite:hover {
+  transform: scale(1.1);
+}
+
+input.favorite:checked {
+  filter: invert(50%) sepia() hue-rotate(-50deg) brightness(125%);
+}
+
+input.favorite:active {
+  filter: invert(50%) sepia() hue-rotate(-50deg);
+}
